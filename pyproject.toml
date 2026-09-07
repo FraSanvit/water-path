@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "water-path"
+version = "0.0.0"
+description = "Open-source Python toolkit for optimising vessel decarbonisation — physics-based route/speed modelling + MILP/LP capacity expansion, built on linopy and HiGHS."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+dependencies = [
+    "pydantic>=2.6",
+    "xarray>=2024.0",
+    "netcdf4>=1.6",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+viz = [
+    "matplotlib>=3.7",
+    "contextily>=1.5",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/waterpath"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "matplotlib>=3.7",
+    "contextily>=1.5",
+]
